@@ -34,10 +34,11 @@ class Comment extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('content, author, email, post_id', 'required'), // Make sure these fields are required and make sure all array here are passed.
-			array('author, email, url', 'length', 'max'=>128),
-			array('email', 'email'),
-			array('url', 'url'),
+			array('content, author, email, post_id', 'required'),// Make sure these fields are required and make sure all array here are passed.
+			array('post_id', 'numerical', 'integerOnly' => true),  // Make sure post_id is an integer
+			array('author, email, url', 'length', 'max'=>128), // Make sure author, email, and url are no longer than 128 characters
+			array('email', 'email'),	// Make sure email is a valid email address
+			array('url', 'url'), // Make sure url is a valid URL
 		);
 	}
 

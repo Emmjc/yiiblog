@@ -46,10 +46,40 @@ class PostController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+		$post = $this->loadModel($id); // Load the post model by ID
+		$comment = $this->newComment($post); // Create a new comment instance
+	
+		$this->render('view', array(
+			'model' => $post,
+			'comment' => $comment, // Pass the comment model to the view
 		));
 	}
+	
+	protected function newComment($post)
+	{
+		$comment = new Comment;
+	
+		// AJAX validation logic
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'comment-form') {
+			echo CActiveForm::validate($comment);
+			Yii::app()->end();
+		}
+	
+		// Handle standard form submission
+		if (isset($_POST['Comment'])) {
+			$comment->attributes = $_POST['Comment'];
+			if ($post->addComment($comment)) {
+				if ($comment->status == Comment::STATUS_PENDING) {
+					Yii::app()->user->setFlash('commentSubmitted', 
+					'Thank you for your comment. Your comment will be posted once approved.');
+				}
+				$this->refresh(); // Refresh page to display new comment or flash message
+			}
+		}
+	
+		return $comment;
+	}
+	
 
 	/**
 	 * Creates a new model.
@@ -120,7 +150,7 @@ class PostController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+public function actionIndex()
 	{
 		$criteria=new CDbCriteria(array(
 			'condition'=>'status='.Post::STATUS_PUBLISHED,
@@ -136,9 +166,13 @@ class PostController extends Controller
 			),
 			'criteria'=>$criteria,
 		));
+		
+		// Create a new comment instance
+		$comment = new Comment();
 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'comment' => $comment,
 		));
 	}
 

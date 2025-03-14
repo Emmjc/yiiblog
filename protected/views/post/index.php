@@ -22,4 +22,5 @@ $this->menu = array(
     'dataProvider' => $dataProvider,
     'itemView' => '_view',
     'template' => "{items}\n{pager}",
+    'viewData' => array('comment' => $comment), // Pass the $comment variable here
 )); ?>
