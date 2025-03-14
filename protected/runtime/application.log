@@ -204,3 +204,12 @@ Stack trace:
 REQUEST_URI=/index.php/comment/admin
 HTTP_REFERER=http://localhost:8000/index.php/comment/index
 ---
+2025/03/14 14:42:45 [warning] [application] Failed to set unsafe attribute "create_time" of "Post".
+in C:\xampp\htdocs\yiiblog\protected\controllers\PostController.php (72)
+in C:\xampp\htdocs\yiiblog\index.php (13)
+2025/03/14 14:42:45 [warning] [application] Failed to set unsafe attribute "update_time" of "Post".
+in C:\xampp\htdocs\yiiblog\protected\controllers\PostController.php (72)
+in C:\xampp\htdocs\yiiblog\index.php (13)
+2025/03/14 14:42:45 [warning] [application] Failed to set unsafe attribute "author_id" of "Post".
+in C:\xampp\htdocs\yiiblog\protected\controllers\PostController.php (72)
+in C:\xampp\htdocs\yiiblog\index.php (13)

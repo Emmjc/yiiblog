@@ -37,7 +37,7 @@ class CommentController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('@'),
+				'users'=>array('admin'), // only admin can perform these actions, dito iibahin if ever na gusto ma access ung ibang user
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
