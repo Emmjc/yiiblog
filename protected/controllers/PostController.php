@@ -46,10 +46,40 @@ class PostController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+		$post = $this->loadModel($id);  // Load the post details
+		$comment = $this->newComment($post);  // Handle new comment creation logic
+	
+		$this->render('view', array(
+			'model' => $post,
+			'comment' => $comment,
 		));
 	}
+	
+	protected function newComment($post)
+	{
+		$comment = new Comment;
+	
+		if(isset($_POST['ajax']) && $_POST['ajax'] === 'comment-form') {
+			echo CActiveForm::validate($comment);
+			Yii::app()->end();
+		}
+	
+		if(isset($_POST['Comment'])) {
+			$comment->attributes = $_POST['Comment'];
+			$comment->post_id = $post->id;  // Assign the post ID
+			if($post->addComment($comment)) {
+				if($comment->status == Comment::STATUS_PENDING)
+					Yii::app()->user->setFlash('commentSubmitted', 
+						'Thank you for your comment. Your comment will be posted once approved.'
+					);
+				$this->refresh();
+			}
+		}
+	
+		return $comment;
+	}
+	
+	
 
 	/**
 	 * Creates a new model.
@@ -136,9 +166,13 @@ class PostController extends Controller
 			),
 			'criteria'=>$criteria,
 		));
+		
+		// Create a new comment instance
+		$comment = new Comment();
 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'comment' => $comment,
 		));
 	}
 

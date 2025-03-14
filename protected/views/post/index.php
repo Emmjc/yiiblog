@@ -21,5 +21,6 @@ $this->menu = array(
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
     'itemView' => '_view',
+    'viewData' => array('comment' => $comment),     // Pass the comment instance to the _view.php file
     'template' => "{items}\n{pager}",
 )); ?>

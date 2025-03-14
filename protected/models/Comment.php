@@ -33,17 +33,15 @@ class Comment extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
-			array('content, status, author, email, post_id', 'required'),
-			array('status, create_time, post_id', 'numerical', 'integerOnly'=>true),
+			array('content, author, email, post_id', 'required'), // Make sure these fields are required and make sure all array here are passed.
 			array('author, email, url', 'length', 'max'=>128),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, content, status, create_time, author, email, url, post_id', 'safe', 'on'=>'search'),
+			array('email', 'email'),
+			array('url', 'url'),
 		);
 	}
+	
+	
 
 	/**
 	 * @return array relational rules.
@@ -63,16 +61,17 @@ class Comment extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'content' => 'Content',
-			'status' => 'Status',
-			'create_time' => 'Create Time',
-			'author' => 'Author',
-			'email' => 'Email',
-			'url' => 'Url',
-			'post_id' => 'Post',
+			'id' => 'Id',
+			'content' => 'Comment',     // Displayed as "Comment"
+			'status' => 'Status',       // Displayed as "Status"
+			'create_time' => 'Create Time',  // Displayed as "Create Time"
+			'author' => 'Name',         // Displayed as "Name"
+			'email' => 'Email',         // Displayed as "Email"
+			'url' => 'Website',         // Displayed as "Website"
+			'post_id' => 'Post',        // Displayed as "Post"
 		);
 	}
+	
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -116,4 +115,25 @@ class Comment extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)     // Only set creation time for new records
+				$this->create_time = time();  
+			return true;
+		}
+		else
+			return false;
+	}
+
+	public function approve()
+	{
+		$this->status = self::STATUS_APPROVED;
+		$this->update(array('status'));
+	}
+	
+	
 }
