@@ -111,6 +111,9 @@ class Post extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination' => array(
+            'pageSize' => 10, // Customize page size as needed
+			),
 		));
 	}
 
@@ -160,5 +163,13 @@ class Post extends CActiveRecord
 	{
 		parent::afterSave();
 		Tag::model()->updateFrequency($this->_oldTags, $this->tags);
-	}	
+	}
+	
+	protected function afterDelete()
+	{
+		parent::afterDelete();
+		Comment::model()->deleteAll('post_id='.$this->id);
+		Tag::model()->updateFrequency($this->tags, '');
+	}
+
 }

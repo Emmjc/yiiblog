@@ -271,3 +271,24 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/yiiblog/index.php/site/post
 ---
+2025/03/14 15:49:32 [error] [exception.CHttpException.404] CHttpException: The requested page does not exist. in C:\xampp\htdocs\yiiblog\protected\controllers\PostController.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yiiblog\protected\controllers\PostController.php(50): PostController->loadModel('7')
+#1 [internal function]: PostController->actionView('7')
+#2 C:\xampp\htdocs\yiiblog\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs(Object(PostController), Array)
+#3 C:\xampp\htdocs\yiiblog\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(PostController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yiiblog\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yiiblog\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yiiblog\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yiiblog\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yiiblog\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yiiblog\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yiiblog\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yiiblog\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yiiblog\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\yiiblog\framework\web\CWebApplication.php(141): CWebApplication->runController('post/view')
+#14 C:\xampp\htdocs\yiiblog\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\yiiblog\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/yiiblog/index.php/post/7?title=This+is+a+draft+1
+---
