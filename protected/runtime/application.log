@@ -727,3 +727,63 @@ REQUEST_URI=/pdc/yiiblog/index.php/comment/21
 in C:\xampp\htdocs\pdc\yiiblog\protected\views\comment\view.php (38)
 in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\CommentController.php (45)
 in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:37 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:37 [warning] [application] Failed to set unsafe attribute "create_time" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:37 [warning] [application] Failed to set unsafe attribute "post_id" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:38 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:38 [warning] [application] Failed to set unsafe attribute "create_time" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:38 [warning] [application] Failed to set unsafe attribute "post_id" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:47 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (70)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:47 [warning] [application] Failed to set unsafe attribute "create_time" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (70)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:46:47 [warning] [application] Failed to set unsafe attribute "post_id" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (70)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:47:00 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (70)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:47:00 [warning] [application] Failed to set unsafe attribute "create_time" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (70)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:47:00 [warning] [application] Failed to set unsafe attribute "post_id" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (70)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:47:00 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:47:00 [warning] [application] Failed to set unsafe attribute "create_time" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/15 09:47:00 [warning] [application] Failed to set unsafe attribute "post_id" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
