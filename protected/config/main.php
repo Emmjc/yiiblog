@@ -81,5 +81,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'carino.marcusjeremy@auf.edu.ph',
+		'commentNeedApproval'=>true,
 	),
 );
