@@ -27,17 +27,8 @@ class CommentController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+			array('allow', // allow authenticated users to access all actions
 				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'), // only admin can perform these actions, dito iibahin if ever na gusto ma access ung ibang user
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -122,7 +113,13 @@ class CommentController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Comment');
+		$dataProvider=new CActiveDataProvider('Comment', array(
+			'criteria'=>array(
+				'with'=>'post',
+				'order'=>'t.status, t.create_time DESC',
+			),
+		));
+	 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -168,6 +165,20 @@ class CommentController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+
+	public function actionApprove($id)
+	{
+		if (Yii::app()->request->isPostRequest) 
+		{
+			$comment = $this->loadModel($id);
+			$comment->approve();
+			$this->redirect(array('index'));
+		} 
+		else 
+		{
+			throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
 		}
 	}
 }
