@@ -83,5 +83,6 @@ return array(
 		'adminEmail'=>'carino.marcusjeremy@auf.edu.ph',
 		'commentNeedApproval'=>true,
 		'tagCloudCount'=>20,
+		'recentCommentCount' => 10,
 	),
 );
