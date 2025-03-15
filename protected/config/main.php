@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Blog Site',
+	'defaultController'=>'post',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -42,16 +43,25 @@ return array(
 		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
+            'rules'=>array(
+                'post/<id:\d+>/<title:.*?>'=>'post/view',
+                'posts/<tag:.*?>'=>'post/index',
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+            ),
 		),
 		
+		// Add this cache component for schema caching
+		'cache'=>array(
+			'class'=>'CDbCache', // Default cache using SQLite
+		),
 
 		// database settings are configured in database.php
-		'db'=>require(dirname(__FILE__).'/database.php'),
+		'db'=>array_merge(
+			require(dirname(__FILE__).'/database.php'),
+			array(
+				'schemaCachingDuration'=>3600, // Cache schema for 1 hour
+			)
+		),
 
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
