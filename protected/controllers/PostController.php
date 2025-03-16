@@ -193,7 +193,7 @@ class PostController extends Controller
 	 */
 	private $_model;
 
-	public function loadModel($id)
+	public function loadModel()
 	{
 		if($this->_model===null)
 		{
