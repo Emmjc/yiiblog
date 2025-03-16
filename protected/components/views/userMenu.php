@@ -8,9 +8,11 @@
     <li>
         <?php echo CHtml::link('💬 Manage Comments', array('comment/admin'), array('class' => 'block text-black hover:text-gray-700')); ?>
     </li>
-    <li>
-        <?php echo CHtml::link('✅ Approve Comments', array('comment/index'), array('class' => 'block text-black hover:text-gray-700')) . 
-            ' <span class="text-white bg-red-600 px-2 py-1 rounded-full text-sm">' . Comment::model()->pendingCommentCount . '</span>'; ?>
+    <li class="flex items-center justify-between">
+        <?php echo CHtml::link('⏳ Pending Comments', array('comment/index'), array('class' => 'text-black hover:text-gray-700 font-medium flex items-center')); ?>
+        <span class="text-white bg-red-600 px-2 py-1 rounded-full text-sm">
+            <?php echo Comment::model()->pendingCommentCount; ?>
+        </span>
     </li>
     <li>
         <?php echo CHtml::link('🚪 Logout', array('site/logout'), array('class' => 'block text-black font-semibold hover:text-gray-700')); ?>

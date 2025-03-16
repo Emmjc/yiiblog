@@ -3,51 +3,50 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
+$this->pageTitle = Yii::app()->name . ' - Login';
+$this->breadcrumbs = array('Login');
 ?>
 
-<h1>Login</h1>
+<div class="bg-white shadow-md rounded-lg border border-gray-300 max-w-md mx-auto mt-10 p-6">
+    <h1 class="text-xl font-bold text-gray-800 text-center">Login</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+    <p class="text-gray-600 text-sm text-center mt-2">Enter your credentials to access your account.</p>
 
-<div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'login-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
+    <?php $form = $this->beginWidget('CActiveForm', array(
+        'id' => 'login-form',
+        'enableClientValidation' => true,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+        ),
+    )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <div class="mt-4">
+        <label class="block font-medium text-gray-700">
+            <?php echo $form->labelEx($model, 'username'); ?>
+        </label>
+        <?php echo $form->textField($model, 'username', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+        <small class="text-red-500"><?php echo $form->error($model, 'username'); ?></small>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
-		<?php echo $form->error($model,'username'); ?>
-	</div>
+    <div class="mt-4">
+        <label class="block font-medium text-gray-700">
+            <?php echo $form->labelEx($model, 'password'); ?>
+        </label>
+        <?php echo $form->passwordField($model, 'password', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+        <small class="text-red-500"><?php echo $form->error($model, 'password'); ?></small>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
-		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
-	</div>
+    <div class="mt-4 flex items-center">
+        <?php echo $form->checkBox($model, 'rememberMe', array('class' => 'mr-2')); ?>
+        <label class="text-gray-700 text-sm">
+            <?php echo $form->label($model, 'rememberMe'); ?>
+        </label>
+        <small class="text-red-500"><?php echo $form->error($model, 'rememberMe'); ?></small>
+    </div>
 
-	<div class="row rememberMe">
-		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
-		<?php echo $form->error($model,'rememberMe'); ?>
-	</div>
+    <div class="mt-6">
+        <?php echo CHtml::submitButton('Login', array('class' => 'w-full bg-black hover:bg-gray-800 text-white font-bold py-2 rounded-lg transition')); ?>
+    </div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-</div><!-- form -->
+    <?php $this->endWidget(); ?>
+</div>

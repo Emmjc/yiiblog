@@ -3,7 +3,7 @@
  
     class RecentComments extends CPortlet
     {
-        public $title='Recent Comments';
+        public $title='';
         public $maxComments=10;
      
         public function getRecentComments()

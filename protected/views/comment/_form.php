@@ -4,67 +4,54 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div class="max-w-3xl mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-lg">
+    
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">Leave a Comment</h2>
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'comment-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>true,
-)); ?>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'id'=>'comment-form',
+        'enableAjaxValidation'=>true,
+        'htmlOptions' => ['class' => 'space-y-5'],
+    )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="text-gray-700 text-sm">Fields with <span class="text-red-500">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary($model, '', '', ['class' => 'p-4 bg-red-100 text-red-800 rounded-md border border-red-300']); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'content'); ?>
-	</div>
+    <!-- Comment Content -->
+    <div>
+        <?php echo $form->labelEx($model,'content', ['class' => 'block text-gray-700 font-semibold mb-1']); ?>
+        <?php echo $form->textArea($model,'content',['class'=>'w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500', 'rows'=>6, 'placeholder'=>'Write your comment here...']); ?>
+        <?php echo $form->error($model,'content', ['class' => 'text-red-500 text-sm']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
+    <!-- Author Name -->
+    <div>
+        <?php echo $form->labelEx($model,'author', ['class' => 'block text-gray-700 font-semibold mb-1']); ?>
+        <?php echo $form->textField($model,'author',['class'=>'w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500', 'maxlength'=>128, 'placeholder'=>'Your name']); ?>
+        <?php echo $form->error($model,'author', ['class' => 'text-red-500 text-sm']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'create_time'); ?>
-		<?php echo $form->textField($model,'create_time'); ?>
-		<?php echo $form->error($model,'create_time'); ?>
-	</div>
+    <!-- Email -->
+    <div>
+        <?php echo $form->labelEx($model,'email', ['class' => 'block text-gray-700 font-semibold mb-1']); ?>
+        <?php echo $form->textField($model,'email',['class'=>'w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500', 'maxlength'=>128, 'placeholder'=>'Your email address']); ?>
+        <?php echo $form->error($model,'email', ['class' => 'text-red-500 text-sm']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'author'); ?>
-		<?php echo $form->textField($model,'author',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'author'); ?>
-	</div>
+    <!-- Website URL -->
+    <div>
+        <?php echo $form->labelEx($model,'url', ['class' => 'block text-gray-700 font-semibold mb-1']); ?>
+        <?php echo $form->textField($model,'url',['class'=>'w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500', 'maxlength'=>128, 'placeholder'=>'Your website (optional)']); ?>
+        <?php echo $form->error($model,'url', ['class' => 'text-red-500 text-sm']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
+    <!-- Submit Button -->
+    <div class="text-right">
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Post Comment' : 'Save', [
+            'class' => 'px-5 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-200 shadow-md'
+        ]); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'url'); ?>
-		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'url'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'post_id'); ?>
-		<?php echo $form->textField($model,'post_id'); ?>
-		<?php echo $form->error($model,'post_id'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
+    <?php $this->endWidget(); ?>
+</div>

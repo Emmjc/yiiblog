@@ -36,30 +36,39 @@ $this->breadcrumbs = array(
 
 
 <!-- Comments Section -->
-<div class="max-w-3xl mx-auto mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-sm">
+<div class="max-w-3xl mx-auto mt-8 p-6 bg-white text-gray-900 border border-gray-300 rounded-lg shadow-lg">
 
     <!-- Comment Count -->
     <?php if ($model->commentCount >= 1): ?>
-        <h3 class="text-lg font-semibold text-gray-800">
+        <h3 class="text-xl font-semibold border-b border-gray-300 pb-2 mb-4">
             <?php echo $model->commentCount . ' Comment(s)'; ?>
         </h3>
 
-        <?php $this->renderPartial('_comments', array(
-            'post' => $model,
-            'comments' => $model->comments,
-        )); ?>
+        <div class="space-y-6">
+            <?php foreach ($model->comments as $comment): ?>
+                <div class="p-4 bg-gray-100 rounded-md shadow-sm border border-gray-200">
+                    <p class="text-sm text-gray-600"><?php echo CHtml::encode($comment->author); ?> • <?php echo date('F j, Y', strtotime($comment->create_time)); ?></p>
+                    <p class="mt-2 text-gray-800"><?php echo CHtml::encode($comment->content); ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
     <?php endif; ?>
 
     <!-- Leave a Comment -->
-    <h3 class="text-lg font-semibold text-gray-800 mt-6">Leave a Comment</h3>
+    <h3 class="text-lg font-semibold mt-8 border-b border-gray-300 pb-2">Leave a Comment</h3>
 
     <?php if (Yii::app()->user->hasFlash('commentSubmitted')): ?>
-        <div class="p-4 bg-green-100 text-green-700 rounded-md mt-4">
+        <div class="p-4 bg-green-100 text-green-800 rounded-md mt-4 border border-green-300">
             <?php echo Yii::app()->user->getFlash('commentSubmitted'); ?>
         </div>
     <?php else: ?>
-        <?php $this->renderPartial('/comment/_form', array(
-            'model' => $comment,
-        )); ?>
+        <div class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-300 shadow-sm">
+            <?php $this->renderPartial('/comment/_form', array(
+                // 'model' => $comment,
+				'model' => new Comment()
+            )); ?>
+        </div>
     <?php endif; ?>
 </div>
+
+
