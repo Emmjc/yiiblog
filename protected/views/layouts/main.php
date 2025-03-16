@@ -1,59 +1,87 @@
 <?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="language" content="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection">
-	<![endif]-->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
-
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <!-- Tailwind Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',  // Deep black
+                        secondary: '#333',   // Slightly lighter black
+                        accent: '#f4f4f4',   // Soft white
+                        textPrimary: '#f9f9f9', // Light text
+                        textSecondary: '#cbd5e1', // Soft gray
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
+<body class="bg-primary text-textPrimary font-sans">
 
-<div class="container" id="page">
+    <!-- Navbar -->
+    <nav class="bg-secondary text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-xl font-bold">
+                <?php echo CHtml::encode(Yii::app()->name); ?>
+            </div>
+            
+            <!-- Menu -->
+            <div class="hidden md:flex space-x-6">
+                <?php $this->widget('zii.widgets.CMenu', array(
+                    'items'=>array(
+                        array('label'=>'Home', 'url'=>array('/site/index')),
+                        array('label'=>'Post', 'url'=>array('/post/index')),
+                        array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+                        array('label'=>'Contact', 'url'=>array('/site/contact')),
+                        array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                        array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                    ),
+                    'htmlOptions' => array('class' => 'flex space-x-4'),
+                    'itemCssClass' => 'hover:text-gray-300',
+                )); ?>
+            </div>
+        </div>
+    </nav>
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+    <!-- Page Container -->
+    <div class="container mx-auto px-4 py-6">
 
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
+        <!-- Breadcrumbs -->
+        <?php if(isset($this->breadcrumbs)): ?>
+            <nav class="text-gray-400 text-sm mb-4">
+                <?php $this->widget('zii.widgets.CBreadcrumbs', array(
+                    'links'=>$this->breadcrumbs,
+                    'htmlOptions' => array('class' => 'flex space-x-2'),
+                    'separator' => '<span class="text-gray-600">/</span>',
+                )); ?>
+            </nav>
+        <?php endif; ?>
 
-	<?php echo $content; ?>
+        <!-- Main Content -->
+        <div class="bg-accent text-secondary p-6 rounded-lg shadow-md">
+            <?php echo $content; ?>
+        </div>
 
-	<div class="clear"></div>
+    </div>
 
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-</div><!-- page -->
+    <!-- Footer -->
+    <footer class="bg-secondary text-textSecondary text-center p-4 mt-6">
+        <p>&copy; <?php echo date('Y'); ?> by My Company. All Rights Reserved.</p>
+        <p class="text-xs"><?php echo Yii::powered(); ?></p>
+    </footer>
 
 </body>
 </html>

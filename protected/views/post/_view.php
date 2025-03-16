@@ -3,41 +3,34 @@
 /* @var $data Post */
 ?>
 
-<div class="view">
+<div class="bg-white shadow-md rounded-lg p-6 mb-4 border border-gray-200">
+    
+    <h2 class="text-xl font-bold text-gray-900 mb-2">
+        <?php echo CHtml::link(CHtml::encode($data->title), array('view', 'id'=>$data->id), ['class' => 'hover:text-gray-600']); ?>
+    </h2>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
+    <p class="text-sm text-gray-500">
+        <span class="font-semibold">Post ID:</span> <?php echo CHtml::encode($data->id); ?>
+    </p>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
-	<br />
+    <p class="text-gray-700 leading-relaxed mt-2">
+        <?php echo CHtml::encode($data->content); ?>
+    </p>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('content')); ?>:</b>
-	<?php echo CHtml::encode($data->content); ?>
-	<br />
+    <div class="mt-4 text-gray-600 text-sm">
+        <span class="font-semibold">Tags:</span> <?php echo CHtml::encode($data->tags); ?>
+    </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('tags')); ?>:</b>
-	<?php echo CHtml::encode($data->tags); ?>
-	<br />
+    <div class="mt-4 flex items-center justify-between">
+        <span class="px-3 py-1 rounded-full text-white text-xs font-semibold 
+            <?php echo ($data->status == 'Published') ? 'bg-green-500' : 'bg-gray-500'; ?>">
+            <?php echo CHtml::encode($data->status); ?>
+        </span>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
-	<?php echo CHtml::encode($data->status); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
-	<?php echo CHtml::encode($data->create_time); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('update_time')); ?>:</b>
-	<?php echo CHtml::encode($data->update_time); ?>
-	<br />
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('author_id')); ?>:</b>
-	<?php echo CHtml::encode($data->author_id); ?>
-	<br />
-
-	*/ ?>
+        <span class="text-xs text-gray-500">
+            <span class="font-semibold">Created:</span> <?php echo CHtml::encode($data->create_time); ?> |
+            <span class="font-semibold">Updated:</span> <?php echo CHtml::encode($data->update_time); ?>
+        </span>
+    </div>
 
 </div>
