@@ -57,10 +57,21 @@ $this->breadcrumbs = array(
                     'delete' => array(
                         'label' => '🗑️ Delete',
                         'imageUrl' => false,
-                        'options' => array('class' => 'text-red-600 hover:underline text-sm'),
+                        'url' => 'Yii::app()->createUrl("post/delete", array("id"=>$data->id))',
+                        'options' => array(
+                            'class' => 'text-red-600 hover:underline text-sm',
+                            'onclick' => 'event.preventDefault(); 
+                                if(confirm("Are you sure you want to delete this post?")) { 
+                                    var form = document.createElement("form");
+                                    form.method = "POST";
+                                    form.action = this.href;
+                                    document.body.appendChild(form);
+                                    form.submit();
+                                }'
+                        ),
                     ),
                 ),
-            ),
+            ),            
         ),
     )); 
     ?>

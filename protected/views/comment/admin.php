@@ -106,7 +106,18 @@ $('.search-form form').submit(function(){
                     'delete' => array(
                         'label' => '🗑️ Delete',
                         'imageUrl' => false,
-                        'options' => array('class' => 'text-red-600 hover:underline text-sm'),
+                        'url' => 'Yii::app()->createUrl("comment/delete", array("id"=>$data->id))',
+                        'options' => array(
+                            'class' => 'text-red-600 hover:text-red-800 hover:underline text-sm cursor-pointer',
+                            'onclick' => 'event.preventDefault(); 
+                                if (confirm("Are you sure you want to delete this comment?")) { 
+                                    var form = document.createElement("form");
+                                    form.method = "POST";
+                                    form.action = this.getAttribute("href");
+                                    document.body.appendChild(form);
+                                    form.submit();
+                                }'
+                        ),
                     ),
                 ),
             ),
