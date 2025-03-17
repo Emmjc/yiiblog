@@ -159,7 +159,7 @@ class PostController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Post', array(
 			'pagination'=>array(
-				'pageSize'=>5,
+				'pageSize'=>10,
 			),
 			'criteria'=>$criteria,
 		));

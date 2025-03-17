@@ -28,8 +28,12 @@
         </span>
 
         <span class="text-xs text-gray-500">
-            <span class="font-semibold">Created:</span> <?php echo CHtml::encode($data->create_time); ?> |
-            <span class="font-semibold">Updated:</span> <?php echo CHtml::encode($data->update_time); ?>
+        <span class="font-semibold">Created:</span> 
+        <?php echo date('F j, Y, g:i a', $data->create_time); ?>
+        <?php if (!empty($data->update_time) && $data->update_time != $data->create_time): ?>
+            | <span class="font-semibold">Updated:</span> 
+            <?php echo date('F j, Y, g:i a', $data->update_time); ?>
+        <?php endif; ?>
         </span>
     </div>
 

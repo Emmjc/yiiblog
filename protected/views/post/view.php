@@ -17,9 +17,17 @@ $this->breadcrumbs = array(
     <!-- Blog Content -->
     <div class="p-8">
         <div class="text-gray-500 text-sm flex justify-between items-center mb-4">
-            <span>📅 Published on: <?php echo date('F d, Y', strtotime($model->create_time)); ?></span>
-            <span class="<?php echo ($model->status = 2) ? 'text-green-600 font-bold' : 'text-yellow-500 font-bold'; ?>">
-                <?php echo ($model->status = 2) ? '✅ Published' : '⏳ Draft'; ?>
+        <span>📅 Published on: <?php echo date('F d, Y', $model->create_time); ?></span>
+            <span class="<?php 
+                echo ($model->status == 1) ? 'text-yellow-500 font-bold' : 
+                    (($model->status == 2) ? 'text-green-600 font-bold' : 
+                    'text-gray-500 font-bold'); 
+            ?>">
+                <?php 
+                    echo ($model->status == 1) ? '⏳ Draft' : 
+                        (($model->status == 2) ? '✅ Published' : 
+                        '📂 Archived'); 
+                ?>
             </span>
         </div>
 
@@ -47,7 +55,8 @@ $this->breadcrumbs = array(
         <div class="space-y-6">
             <?php foreach ($model->comments as $comment): ?>
                 <div class="p-4 bg-gray-100 rounded-md shadow-sm border border-gray-200">
-                    <p class="text-sm text-gray-600"><?php echo CHtml::encode($comment->author); ?> • <?php echo date('F j, Y', strtotime($comment->create_time)); ?></p>
+                    <p class="text-sm text-gray-600"><?php echo CHtml::encode($comment->author); ?> • <?php echo date('F j, Y', $comment->create_time); ?>
+
                     <p class="mt-2 text-gray-800"><?php echo CHtml::encode($comment->content); ?></p>
                 </div>
             <?php endforeach; ?>

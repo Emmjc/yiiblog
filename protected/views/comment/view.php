@@ -64,7 +64,7 @@ $this->menu=array(
             <?php echo CHtml::encode($model->author); ?>
         </div>
         <div class="text-sm text-gray-500">
-            📅 <?php echo date('F j, Y, g:i a', strtotime($model->create_time)); ?>
+            📅 <?php echo date('F j, Y, g:i a', $model->create_time); ?>
         </div>
     </div>
 

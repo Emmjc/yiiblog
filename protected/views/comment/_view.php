@@ -6,7 +6,7 @@
             <?php echo CHtml::encode($data->author); ?>
         </div>
         <div class="text-sm text-gray-500">
-            📅 <?php echo date('F d, Y', strtotime($data->create_time)); ?>
+            📅 <?php echo date('F j, Y, g:i a', $data->create_time); ?>
         </div>
     </div>
 

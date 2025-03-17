@@ -6,3 +6,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Redirect everything else to index.php
 RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+# Fix the timezone
+php_value date.timezone "Asia/Manila"
