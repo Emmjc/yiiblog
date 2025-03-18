@@ -35,7 +35,7 @@ $this->menu=array(
         <!-- Metadata Section -->
         <div class="mt-6 text-gray-600 text-sm space-y-3">
             <div class="flex justify-between">
-                <span>📅 Created on: <?php echo date('F d, Y', strtotime($model->create_time)); ?></span>
+                <span>📅 Created on: <?php echo date('F d, Y', $model->create_time); ?></span>
                 <span class="<?php echo ($model->status == 2) ? 'text-green-600 font-bold' : 'text-yellow-500 font-bold'; ?>">
                     <?php echo ($model->status == 2) ? '✅ Approved' : '⏳ Pending'; ?>
                 </span>
