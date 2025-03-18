@@ -144,6 +144,8 @@ class Tag extends CActiveRecord
 		$criteria->addInCondition('name',$tags);
 		$this->updateCounters(array('frequency'=>-1),$criteria);
 		$this->deleteAll('frequency<=0');
+
+		Yii::app()->cache->delete('tagCloud');
 	}
 
 	public function findTagWeights($maxTags = 20)
@@ -151,12 +153,12 @@ class Tag extends CActiveRecord
 		$criteria = new CDbCriteria();
 		$criteria->limit = $maxTags;
 		$tags = Tag::model()->findAll($criteria);
-		$tagWeights = array(); // Fixed typo in variable name
+		$tagWeights = array();
 		
 		foreach ($tags as $tag) {
-			$weight = $tag->frequency + 8; // Fixed typo in variable name
-			$weight = ($weight >= 12) ? 12 : $weight; // Corrected condition syntax
-			$tagWeights[$tag->name] = $weight; // Corrected array syntax
+			$weight = $tag->frequency + 8; 
+			$weight = ($weight >= 12) ? 12 : $weight; 
+			$tagWeights[$tag->name] = $weight; 
 		}
 
 		return $tagWeights;

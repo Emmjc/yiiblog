@@ -8,16 +8,26 @@ $this->breadcrumbs = array(
 <div class="max-w-4xl mx-auto mt-8 bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300">
     
     <!-- Featured Post Title -->
-    <div class="bg-black p-6">
+    <div class="bg-black p-6 flex justify-between items-center">
         <h1 class="text-3xl font-extrabold text-white">
             <?php echo CHtml::encode($model->title); ?>
         </h1>
+
+        <?php if (!Yii::app()->user->isGuest): ?>
+            <?php echo CHtml::link(
+                '<span class="material-icons">edit</span> Edit Post',
+                array('post/update', 'id' => $model->id),
+                array(
+                    'class' => 'inline-flex items-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-all'
+                )
+            ); ?>
+        <?php endif; ?>
     </div>
 
     <!-- Blog Content -->
     <div class="p-8">
         <div class="text-gray-500 text-sm flex justify-between items-center mb-4">
-        <span>📅 Published on: <?php echo date('F d, Y', $model->create_time); ?></span>
+            <span>📅 Published on: <?php echo date('F d, Y', $model->create_time); ?></span>
             <span class="<?php 
                 echo ($model->status == 1) ? 'text-yellow-500 font-bold' : 
                     (($model->status == 2) ? 'text-green-600 font-bold' : 
@@ -41,6 +51,7 @@ $this->breadcrumbs = array(
         </div>
     </div>
 </div>
+
 
 
 <!-- Comments Section -->

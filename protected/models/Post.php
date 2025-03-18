@@ -164,7 +164,13 @@ class Post extends CActiveRecord
 		parent::afterSave();
 		Tag::model()->updateFrequency($this->_oldTags, $this->tags);
 	}
-	
+
+	protected function afterFind()
+	{
+		parent::afterFind();
+		$this->_oldTags=$this->tags;
+	}
+
 	protected function afterDelete()
 	{
 		parent::afterDelete();

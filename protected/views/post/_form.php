@@ -6,7 +6,9 @@
 
 <div class="max-w-2xl mx-auto mt-8 p-6 bg-white text-gray-900 border border-gray-300 rounded-lg shadow-lg">
 
-    <h2 class="text-2xl font-bold text-gray-800 mb-4">Create a New Blog Post</h2>
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+        <?php echo $model->isNewRecord ? 'Create a New Blog Post' : 'Update Blog Post'; ?>
+    </h2>
 
     <?php $form = $this->beginWidget('CActiveForm', array(
         'id' => 'post-form',
