@@ -48,10 +48,20 @@
         <?php echo $form->error($model, 'status', array('class' => 'text-red-500 text-sm')); ?>
     </div>
 
-    <!-- Submit Button -->
-    <div class="flex justify-end">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Save Post' : 'Update Post', array('class' => 'bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200')); ?>
-    </div>
+    <!-- Submit & Cancel Buttons -->
+<div class="flex justify-end gap-4">
+    <?php echo CHtml::submitButton(
+        $model->isNewRecord ? 'Save Post' : 'Update Post', 
+        array('class' => 'bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200')
+    ); ?>
+
+    <?php echo CHtml::link(
+        'Cancel', 
+        array('post/view', 'id' => $model->id), // Change 'post/index' to your desired route
+        array('class' => 'bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200')
+    ); ?>
+</div>
+
 
     <?php $this->endWidget(); ?>
 
