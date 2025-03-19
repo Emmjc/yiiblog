@@ -3,21 +3,21 @@
 /* @var $data Post */
 ?>
 
-<div class="bg-white shadow-md rounded-lg p-6 mb-4 border border-gray-200">
+<div class="bg-secondary shadow-md rounded-lg p-6 mb-4 border border-primary text-black">
     
-    <h2 class="text-xl font-bold text-gray-900 mb-2">
-        <?php echo CHtml::link(CHtml::encode($data->title), array('view', 'id'=>$data->id), ['class' => 'hover:text-gray-600']); ?>
+    <h2 class="text-xl font-bold text-primary mb-2">
+        <?php echo CHtml::link(CHtml::encode($data->title), array('view', 'id'=>$data->id), ['class' => 'hover:text-gray-700']); ?>
     </h2>
 
-    <p class="text-sm text-gray-500">
+    <p class="text-sm text-gray-700">
         <span class="font-semibold">Post ID:</span> <?php echo CHtml::encode($data->id); ?>
     </p>
 
-    <p class="text-gray-700 leading-relaxed mt-2">
+    <p class="text-gray-800 leading-relaxed mt-2">
         <?php echo CHtml::encode($data->content); ?>
     </p>
 
-    <div class="mt-4 text-gray-600 text-sm">
+    <div class="mt-4 text-gray-700 text-sm">
         <span class="font-semibold">Tags:</span> <?php echo CHtml::encode($data->tags); ?>
     </div>
 
@@ -27,7 +27,7 @@
             <?php echo CHtml::encode($data->status); ?>
         </span>
 
-        <span class="text-xs text-gray-500">
+        <span class="text-xs text-gray-600">
         <span class="font-semibold">Created:</span> 
         <?php echo date('F j, Y, g:i a', $data->create_time); ?>
         <?php if (!empty($data->update_time) && $data->update_time != $data->create_time): ?>

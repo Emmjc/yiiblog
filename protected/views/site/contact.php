@@ -7,79 +7,95 @@ $this->pageTitle = Yii::app()->name . ' - Contact Us';
 $this->breadcrumbs = array('Contact');
 ?>
 
-<div class="bg-white shadow-md rounded-lg border border-gray-300 max-w-lg mx-auto mt-10 p-6">
-    <h1 class="text-xl font-bold text-gray-800 text-center">Contact Us</h1>
+<!-- Contact Us Section -->
+<div class="relative bg-white">
+    <div class="absolute inset-0 skew-y-1 bg-primary"></div>
+    <div class="relative container mx-auto space-y-8 px-4 py-16 lg:px-8 xl:max-w-4xl">
 
-    <?php if (Yii::app()->user->hasFlash('contact')): ?>
-        <div class="bg-green-100 text-green-700 p-3 rounded-lg mt-4 text-center">
-            <?php echo Yii::app()->user->getFlash('contact'); ?>
+        <!-- Heading -->
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-white md:text-4xl">Contact Us</h2>
+            <p class="text-lg text-white/75 mt-2">
+                Have business inquiries or questions? Fill out the form below, and we’ll get back to you soon!
+            </p>
         </div>
-    <?php else: ?>
+        <!-- END Heading -->
 
-        <p class="text-gray-600 text-sm text-center mt-2">
-            Have business inquiries or questions? Fill out the form below to reach us. We'll get back to you soon!
-        </p>
+        <div class="bg-white shadow-lg rounded-lg border border-gray-300 p-6">
+            <?php if (Yii::app()->user->hasFlash('contact')): ?>
+                <div class="bg-green-100 text-green-700 p-3 rounded-lg text-center">
+                    <?php echo Yii::app()->user->getFlash('contact'); ?>
+                </div>
+            <?php else: ?>
 
-        <?php $form = $this->beginWidget('CActiveForm', array(
-            'id' => 'contact-form',
-            'enableClientValidation' => true,
-            'clientOptions' => array(
-                'validateOnSubmit' => true,
-            ),
-        )); ?>
+                <?php $form = $this->beginWidget('CActiveForm', array(
+                    'id' => 'contact-form',
+                    'enableClientValidation' => true,
+                    'clientOptions' => array('validateOnSubmit' => true),
+                )); ?>
 
-        <div class="mt-4">
-            <label class="block font-medium text-gray-700">
-                <?php echo $form->labelEx($model, 'name'); ?>
-            </label>
-            <?php echo $form->textField($model, 'name', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
-            <small class="text-red-500"><?php echo $form->error($model, 'name'); ?></small>
+                <!-- Name Field -->
+                <div class="mt-4">
+                    <label class="block font-medium text-gray-700">
+                        <?php echo $form->labelEx($model, 'name'); ?>
+                    </label>
+                    <?php echo $form->textField($model, 'name', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                    <small class="text-red-500"><?php echo $form->error($model, 'name'); ?></small>
+                </div>
+
+                <!-- Email Field -->
+                <div class="mt-4">
+                    <label class="block font-medium text-gray-700">
+                        <?php echo $form->labelEx($model, 'email'); ?>
+                    </label>
+                    <?php echo $form->textField($model, 'email', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                    <small class="text-red-500"><?php echo $form->error($model, 'email'); ?></small>
+                </div>
+
+                <!-- Subject Field -->
+                <div class="mt-4">
+                    <label class="block font-medium text-gray-700">
+                        <?php echo $form->labelEx($model, 'subject'); ?>
+                    </label>
+                    <?php echo $form->textField($model, 'subject', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                    <small class="text-red-500"><?php echo $form->error($model, 'subject'); ?></small>
+                </div>
+
+                <!-- Message Field -->
+                <div class="mt-4">
+                    <label class="block font-medium text-gray-700">
+                        <?php echo $form->labelEx($model, 'body'); ?>
+                    </label>
+                    <?php echo $form->textArea($model, 'body', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'rows' => 5)); ?>
+                    <small class="text-red-500"><?php echo $form->error($model, 'body'); ?></small>
+                </div>
+
+                <!-- CAPTCHA -->
+                <?php if (CCaptcha::checkRequirements()): ?>
+                    <div class="mt-4">
+                        <label class="block font-medium text-gray-700">
+                            <?php echo $form->labelEx($model, 'verifyCode'); ?>
+                        </label>
+                        <div class="flex items-center space-x-4">
+                            <?php $this->widget('CCaptcha'); ?>
+                            <?php echo $form->textField($model, 'verifyCode', array('class' => 'px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                        </div>
+                        <small class="text-gray-500 text-sm">
+                            Enter the letters shown above. Letters are not case-sensitive.
+                        </small>
+                        <small class="text-red-500"><?php echo $form->error($model, 'verifyCode'); ?></small>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Submit Button -->
+                <div class="mt-6">
+                    <?php echo CHtml::submitButton('Submit', array('class' => 'w-full bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition')); ?>
+                </div>
+
+                <?php $this->endWidget(); ?>
+            <?php endif; ?>
         </div>
 
-        <div class="mt-4">
-            <label class="block font-medium text-gray-700">
-                <?php echo $form->labelEx($model, 'email'); ?>
-            </label>
-            <?php echo $form->textField($model, 'email', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
-            <small class="text-red-500"><?php echo $form->error($model, 'email'); ?></small>
-        </div>
-
-        <div class="mt-4">
-            <label class="block font-medium text-gray-700">
-                <?php echo $form->labelEx($model, 'subject'); ?>
-            </label>
-            <?php echo $form->textField($model, 'subject', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
-            <small class="text-red-500"><?php echo $form->error($model, 'subject'); ?></small>
-        </div>
-
-        <div class="mt-4">
-            <label class="block font-medium text-gray-700">
-                <?php echo $form->labelEx($model, 'body'); ?>
-            </label>
-            <?php echo $form->textArea($model, 'body', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'rows' => 5)); ?>
-            <small class="text-red-500"><?php echo $form->error($model, 'body'); ?></small>
-        </div>
-
-        <?php if (CCaptcha::checkRequirements()): ?>
-        <div class="mt-4">
-            <label class="block font-medium text-gray-700">
-                <?php echo $form->labelEx($model, 'verifyCode'); ?>
-            </label>
-            <div class="flex items-center space-x-4">
-                <?php $this->widget('CCaptcha'); ?>
-                <?php echo $form->textField($model, 'verifyCode', array('class' => 'px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
-            </div>
-            <small class="text-gray-500 text-sm">
-                Enter the letters shown above. Letters are not case-sensitive.
-            </small>
-            <small class="text-red-500"><?php echo $form->error($model, 'verifyCode'); ?></small>
-        </div>
-        <?php endif; ?>
-
-        <div class="mt-6">
-            <?php echo CHtml::submitButton('Submit', array('class' => 'w-full bg-black hover:bg-gray-800 text-white font-bold py-2 rounded-lg transition')); ?>
-        </div>
-
-        <?php $this->endWidget(); ?>
-    <?php endif; ?>
+    </div>
 </div>
+<!-- END Contact Us Section -->

@@ -19,19 +19,18 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a1a1a',  // Deep black
-                        secondary: '#333',   // Slightly lighter black
-                        accent: '#f4f4f4',   // Soft white
-                        textPrimary: '#f9f9f9', // Light text
-                        textSecondary: '#cbd5e1', // Soft gray
+                        primary: '#101828',
+                        secondary: '#F4F2ED'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
                     }
                 }
             }
-        }
+        };
     </script>
 </head>
 
-<body class="bg-primary text-textPrimary font-sans">
 
 <body class="bg-primary text-textPrimary font-sans">
 
@@ -56,10 +55,10 @@
                 <?php 
                 $this->widget('zii.widgets.CMenu', array(
                     'items' => array(
-                        // array(
-                        //     'label' => '<span class="material-icons align-middle">home</span> Home',
-                        //     'url' => array('/site/index')
-                        // ),
+                        array(
+                            'label' => '<span class="material-icons align-middle">home</span> Home',
+                            'url' => array('/site/index')
+                        ),
                         array(
                             'label' => '<span class="material-icons align-middle">article</span> Post',
                             'url' => array('/post/index')
@@ -141,7 +140,7 @@
         <?php endif; ?>
 
         <!-- Main Content -->
-        <div class="bg-accent text-secondary p-6 rounded-lg shadow-md">
+        <div class="bg-accent text-black p-6 rounded-lg shadow-md">
             <?php echo $content; ?>
         </div>
 
