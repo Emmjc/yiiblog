@@ -89,3 +89,23 @@ REQUEST_URI=/pdc/yiiblog/comment/index
 in C:\xampp\htdocs\pdc\yiiblog\protected\views\comment\_view.php (9)
 in C:\xampp\htdocs\pdc\yiiblog\protected\views\comment\index.php (17)
 in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\CommentController.php (123)
+2025/03/19 21:25:12 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\CommentController.php (87)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/19 21:25:13 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\CommentController.php (87)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/19 21:33:02 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/19 21:36:23 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (64)
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\PostController.php (50)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/19 21:39:08 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\CommentController.php (87)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)
+2025/03/19 21:39:09 [warning] [application] Failed to set unsafe attribute "status" of "Comment".
+in C:\xampp\htdocs\pdc\yiiblog\protected\controllers\CommentController.php (87)
+in C:\xampp\htdocs\pdc\yiiblog\index.php (13)

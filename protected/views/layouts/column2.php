@@ -19,15 +19,12 @@
                 </div>
             <?php endif; ?>
 
-            <?php if ($this->beginCache('tagCloud', array('duration' => 3600))): ?>
                 <div class="mb-6">
                     <h2 class="text-lg font-semibold border-b border-gray-700 pb-2 mb-3">Tag Cloud</h2>
                     <?php $this->widget('TagCloud', array(
                         'maxTags' => Yii::app()->params['tagCloudCount'],
                     )); ?>
                 </div>
-                <?php $this->endCache(); ?>
-            <?php endif; ?>
 
             <div>
                 <h2 class="text-lg font-semibold border-b border-gray-700 pb-2 mb-3">Recent Comments</h2>

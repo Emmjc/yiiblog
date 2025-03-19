@@ -81,14 +81,16 @@ $this->breadcrumbs = array(
         <div class="p-4 bg-green-100 text-green-800 rounded-md mt-4 border border-green-300">
             <?php echo Yii::app()->user->getFlash('commentSubmitted'); ?>
         </div>
-    <?php else: ?>
+    <?php elseif (Yii::app()->user->isGuest): ?>  <!-- Only visible to guest users -->
         <div class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-300 shadow-sm">
             <?php $this->renderPartial('/comment/_form', array(
-                // 'model' => $comment,
-				'model' => new Comment()
+                'model' => new Comment()
             )); ?>
         </div>
+    <?php else: ?>
+        <p class="mt-4 text-gray-700">You must be logged out to leave a comment.</p>
     <?php endif; ?>
+
 </div>
 
 

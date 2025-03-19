@@ -18,6 +18,17 @@
 
     <?php echo $form->errorSummary($model, '', '', ['class' => 'p-4 bg-red-100 text-red-800 rounded-md border border-red-300']); ?>
 
+    <?php if (!Yii::app()->user->isGuest): ?> <!-- Only show if user is logged in -->
+    <!-- Status -->
+    <div>
+        <?php echo $form->labelEx($model, 'status', array('class' => 'block text-gray-700 font-semibold mb-1')); ?>
+        <?php echo $form->dropDownList($model, 'status', Lookup::items('CommentStatus'), array(
+            'class' => 'mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2'
+        )); ?>
+        <?php echo $form->error($model, 'status', array('class' => 'text-red-500 text-sm')); ?>
+    </div>
+    <?php endif; ?>
+
     <!-- Comment Content -->
     <div>
         <?php echo $form->labelEx($model,'content', ['class' => 'block text-gray-700 font-semibold mb-1']); ?>
@@ -46,10 +57,14 @@
         <?php echo $form->error($model,'url', ['class' => 'text-red-500 text-sm']); ?>
     </div>
 
-    <!-- Submit Button -->
-    <div class="text-right">
+    <!-- Submit & Cancel Buttons -->
+    <div class="flex justify-end space-x-3">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Post Comment' : 'Save', [
             'class' => 'px-5 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-200 shadow-md'
+        ]); ?>
+
+        <?php echo CHtml::link('Cancel', array('comment/view' , 'id' => $model->id), [
+            'class' => 'px-5 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition duration-200 shadow-md'
         ]); ?>
     </div>
 

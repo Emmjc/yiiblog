@@ -19,10 +19,20 @@ $this->menu=array(
 <div class="max-w-3xl mx-auto mt-8 bg-white shadow-lg rounded-lg overflow-hidden border border-gray-300">
     
     <!-- Header -->
-    <div class="bg-black p-6">
+    <div class="bg-black p-6 flex justify-between items-center">
         <h1 class="text-3xl font-extrabold text-white">
             Comment #<?php echo $model->id; ?>
         </h1>
+
+        <?php if (!Yii::app()->user->isGuest): ?>
+            <?php echo CHtml::link(
+                '<span class="material-icons">edit</span> Manage Comment',
+                array('comment/update', 'id' => $model->id),
+                array(
+                    'class' => 'inline-flex items-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-all'
+                )
+            ); ?>
+        <?php endif; ?>
     </div>
 
     <!-- Main Content -->

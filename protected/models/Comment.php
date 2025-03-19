@@ -38,6 +38,7 @@ class Comment extends CActiveRecord
 			array('author, email, url', 'length', 'max'=>128),
 			array('email','email'),
 			array('url','url'),
+			array('status', 'in', 'range' => array(self::STATUS_PENDING, self::STATUS_APPROVED)),
 		);
 	}
 
