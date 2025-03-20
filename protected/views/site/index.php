@@ -11,7 +11,7 @@ $this->pageTitle = Yii::app()->name;
             
             <!-- Feature Image (Left Side) -->
             <div class="lg:w-1/2 w-full">
-                <img src="../assets/blog-preview.png" alt="Blog Preview" 
+                <img src="../assets/blog.png" alt="Blog Preview" 
                      class="w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto object-contain">
             </div>
 

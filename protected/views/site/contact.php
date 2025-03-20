@@ -39,7 +39,7 @@ $this->breadcrumbs = array('Contact');
                     <label class="block font-medium text-gray-700">
                         <?php echo $form->labelEx($model, 'name'); ?>
                     </label>
-                    <?php echo $form->textField($model, 'name', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                    <?php echo $form->textField($model, 'name', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'placeholder' => 'Enter your full name')); ?>
                     <small class="text-red-500"><?php echo $form->error($model, 'name'); ?></small>
                 </div>
 
@@ -48,7 +48,7 @@ $this->breadcrumbs = array('Contact');
                     <label class="block font-medium text-gray-700">
                         <?php echo $form->labelEx($model, 'email'); ?>
                     </label>
-                    <?php echo $form->textField($model, 'email', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                    <?php echo $form->textField($model, 'email', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'placeholder' => 'e.g., yourname@example.com')); ?>
                     <small class="text-red-500"><?php echo $form->error($model, 'email'); ?></small>
                 </div>
 
@@ -57,7 +57,7 @@ $this->breadcrumbs = array('Contact');
                     <label class="block font-medium text-gray-700">
                         <?php echo $form->labelEx($model, 'subject'); ?>
                     </label>
-                    <?php echo $form->textField($model, 'subject', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                    <?php echo $form->textField($model, 'subject', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'placeholder' => 'Briefly describe your inquiry')); ?>
                     <small class="text-red-500"><?php echo $form->error($model, 'subject'); ?></small>
                 </div>
 
@@ -66,7 +66,7 @@ $this->breadcrumbs = array('Contact');
                     <label class="block font-medium text-gray-700">
                         <?php echo $form->labelEx($model, 'body'); ?>
                     </label>
-                    <?php echo $form->textArea($model, 'body', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'rows' => 5)); ?>
+                    <?php echo $form->textArea($model, 'body', array('class' => 'w-full px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'rows' => 5, 'placeholder' => 'Provide detailed information about your concern...')); ?>
                     <small class="text-red-500"><?php echo $form->error($model, 'body'); ?></small>
                 </div>
 
@@ -78,7 +78,7 @@ $this->breadcrumbs = array('Contact');
                         </label>
                         <div class="flex items-center space-x-4">
                             <?php $this->widget('CCaptcha'); ?>
-                            <?php echo $form->textField($model, 'verifyCode', array('class' => 'px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300')); ?>
+                            <?php echo $form->textField($model, 'verifyCode', array('class' => 'px-4 py-2 border rounded-lg focus:ring focus:ring-gray-300', 'placeholder' => 'Enter the code shown')); ?>
                         </div>
                         <small class="text-gray-500 text-sm">
                             Enter the letters shown above. Letters are not case-sensitive.
@@ -89,11 +89,14 @@ $this->breadcrumbs = array('Contact');
 
                 <!-- Submit Button -->
                 <div class="mt-6">
-                    <?php echo CHtml::submitButton('Submit', array('class' => 'w-full bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition')); ?>
+                    <?php echo CHtml::button('Submit', array(
+                        'class' => 'w-full bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition',
+                        'onclick' => 'return false;' // Prevents the button from submitting the form
+                    )); ?>
                 </div>
 
                 <?php $this->endWidget(); ?>
-            <?php endif; ?>
+                <?php endif; ?>
         </div>
 
     </div>

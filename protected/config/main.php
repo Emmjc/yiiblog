@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Blog Site',
+	'name'=>'YiiSpot',
 	'defaultController'=>'post',
 
 	// preloading 'log' component
@@ -94,6 +94,6 @@ return array(
 		'adminEmail'=>'carino.marcusjeremy@auf.edu.ph',
 		'commentNeedApproval'=>true,
 		'tagCloudCount'=>20,
-		'recentCommentCount' => 10,
+		'recentCommentCount' => 5,
 	),
 );
